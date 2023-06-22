@@ -11,7 +11,7 @@ class BackgroundImage extends StatelessWidget {
     return ClipPath(
       clipper: CurveClipper(),
       child: Container(
-        height: size.height * 0.55,
+        height: size.height * 0.5,
         color: blueGrey.withOpacity(0.8),
         child: const Padding(
           padding: EdgeInsets.symmetric(

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 import 'dart:math' as math;
-
 
 import '../helper/colors.dart';
 
 class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
 
-    return  Padding(
-      padding: EdgeInsets.only(left: 20.0,right: 10.0),
+    return Padding(
+      padding: EdgeInsets.only(left: 20.0, right: 10.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,11 +50,11 @@ class CustomAppBar extends StatelessWidget {
               ),
               Text(
                 'Tamara Bellis',
-                style: TextStyle(color: black, fontWeight: FontWeight.w600,fontSize: 18),
+                style: TextStyle(
+                    color: black, fontWeight: FontWeight.w600, fontSize: 18),
               ),
             ],
           ),
-
           Row(
             children: [
               Stack(
@@ -67,11 +66,13 @@ class CustomAppBar extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         color: primary,
-                        borderRadius: BorderRadius.circular(30.0)
-                    ),
+                        borderRadius: BorderRadius.circular(30.0)),
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Text('0',style: TextStyle(color: white,fontSize: 8),),
+                      child: Text(
+                        '0',
+                        style: TextStyle(color: white, fontSize: 8),
+                      ),
                     ),
                   )
                 ],
@@ -79,9 +80,14 @@ class CustomAppBar extends StatelessWidget {
               Transform(
                 transform: Matrix4.rotationY(math.pi),
                 alignment: Alignment.center,
-                child: Icon(
-                  Icons.sort_rounded,
-                  size: 30.0,
+                child: GestureDetector(
+                  onTap: () {
+                    AuthenticationRepository.Instance.logout();
+                  },
+                  child: Icon(
+                    Icons.sort_rounded,
+                    size: 30.0,
+                  ),
                 ),
               )
             ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yoga_app/screens/login.dart';
+import 'package:yoga_app/screens/authentication/login.dart';
 import '../models/data.dart';
 import '../models/styles.dart';
 import '../helper/colors.dart';

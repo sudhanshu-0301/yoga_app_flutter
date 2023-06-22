@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:yoga_app/helper/colors.dart';
+import 'package:yoga_app/widget/listcourses.dart';
 
 import '../widget/custom_navbar_hometop.dart';
 import '../widget/diffstyles.dart';
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             CustomAppBar(),
             DiffStyles(),
+            Courses()
           ],
         ),
       ),

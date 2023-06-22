@@ -38,8 +38,11 @@ dependencies:
   get: ^4.6.5
   slide_to_act : ^2.0.1
   just_audio: ^0.9.30
-
+  flutter_otp_text_field: ^1.1.1
   curved_navigation_bar : ^0.3.4
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.3
+  
 
 dev_dependencies:
   flutter_test:

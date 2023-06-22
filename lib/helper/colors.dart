@@ -12,5 +12,4 @@ const Color white = Colors.white;
 const Color blueGrey = Colors.blueGrey;
 
 //padding
-
 const double appPadding = 20.0;
