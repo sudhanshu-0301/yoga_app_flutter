@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../helper/colors.dart';
 import '../models/course.dart';
 import '../models/data.dart';
-
+import '../screens/video player/videoinfo.dart';
 
 class Courses extends StatelessWidget {
   Widget _buildCourses(BuildContext context, int index) {
@@ -24,66 +24,87 @@ class Courses extends StatelessWidget {
                   blurRadius: 30.0,
                   offset: Offset(10, 15))
             ]),
-        child: Padding(
-          padding: const EdgeInsets.all(appPadding),
-          child: Row(
-            children: [
-              Container(
-                width: size.width * 0.3,
-                height: size.height * 0.2,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.0),
-                  child: Image(
-                    image: AssetImage(course.imageUrl),
-                    fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: () {
+            Get.to(() => const VideoInfo());
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(appPadding),
+            child: Row(
+              children: [
+                Container(
+                  width: size.width * 0.3,
+                  height: size.height * 0.2,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: Image(
+                      image: AssetImage(course.imageUrl),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: size.width * 0.4,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: appPadding / 2, top: appPadding / 1.5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        course.name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                Container(
+                  width: size.width * 0.4,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: appPadding / 2, top: appPadding / 1.5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          course.name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                          maxLines: 2,
                         ),
-                        maxLines: 2,
-                      ),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.folder_open_rounded,color: black.withOpacity(0.3),),
-                          SizedBox(
-                            width: size.width * 0.01,
-                          ),
-                          Text(course.students,style: TextStyle(color: black.withOpacity(0.3),),)
-                        ],
-                      ),
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.access_time_outlined,color: black.withOpacity(0.3),),
-                          SizedBox(
-                            width: size.width * 0.01,
-                          ),
-                          Text(course.time.toString() + ' min',style: TextStyle(color: black.withOpacity(0.3),),)
-                        ],
-                      ),
-                    ],
+                        SizedBox(
+                          height: size.height * 0.01,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.folder_open_rounded,
+                              color: black.withOpacity(0.3),
+                            ),
+                            SizedBox(
+                              width: size.width * 0.01,
+                            ),
+                            Text(
+                              course.students,
+                              style: TextStyle(
+                                color: black.withOpacity(0.3),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: size.height * 0.01,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time_outlined,
+                              color: black.withOpacity(0.3),
+                            ),
+                            SizedBox(
+                              width: size.width * 0.01,
+                            ),
+                            Text(
+                              course.time.toString() + ' min',
+                              style: TextStyle(
+                                color: black.withOpacity(0.3),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -103,7 +124,7 @@ class Courses extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Courses',
                   style: TextStyle(
                     fontSize: 24,
@@ -111,12 +132,17 @@ class Courses extends StatelessWidget {
                     letterSpacing: 1.5,
                   ),
                 ),
-                Text(
-                  'See All',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
-                      color: primary),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => const VideoInfo());
+                  },
+                  child: const Text(
+                    'See All',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                        color: primary),
+                  ),
                 ),
               ],
             ),

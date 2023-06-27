@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yoga_app/screens/authentication/login.dart';
+import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 import '../models/data.dart';
 import '../models/styles.dart';
 import '../helper/colors.dart';
@@ -9,102 +11,107 @@ class DiffStyles extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     Style style = styles[index];
 
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: appPadding / 2),
-          child: Container(
-            margin:
-                EdgeInsets.only(top: appPadding * 3, bottom: appPadding * 2),
-            width: size.width * 0.4,
-            height: size.height * 0.2,
-            decoration: BoxDecoration(
-                color: white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0),
-                    bottomRight: Radius.circular(20.0),
-                    topRight: Radius.circular(100.0)),
-                boxShadow: [
-                  BoxShadow(
-                      color: black.withOpacity(0.3),
-                      blurRadius: 20.0,
-                      offset: Offset(5, 15))
-                ]),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: appPadding / 2,
-                      right: appPadding * 3,
-                      top: appPadding),
-                  child: Text(
-                    style.name,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 2,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: appPadding / 2,
-                      right: appPadding / 2,
-                      bottom: appPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.access_time_outlined,
-                            color: black.withOpacity(0.3),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.01,
-                          ),
-                          Text(
-                            style.time.toString() + ' min',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: black.withOpacity(0.3)),
-                            maxLines: 2,
-                          ),
-                        ],
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: primary,
-                            borderRadius: BorderRadius.circular(5.0)),
-                        child: Icon(
-                          Icons.add,
-                          color: white,
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          right: 0,
-          top: 0,
-          child: Container(
-            child: Image(
-              width: size.width * 0.3,
+    return GestureDetector(
+      onTap: () {
+        Get.to(() => const VideoInfo());
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: appPadding / 2),
+            child: Container(
+              margin:
+                  EdgeInsets.only(top: appPadding * 3, bottom: appPadding * 2),
+              width: size.width * 0.4,
               height: size.height * 0.2,
-              image: AssetImage(style.imageUrl),
+              decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      bottomLeft: Radius.circular(20.0),
+                      bottomRight: Radius.circular(20.0),
+                      topRight: Radius.circular(100.0)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: black.withOpacity(0.3),
+                        blurRadius: 20.0,
+                        offset: Offset(5, 15))
+                  ]),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: appPadding / 2,
+                        right: appPadding * 3,
+                        top: appPadding),
+                    child: Text(
+                      style.name,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 2,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: appPadding / 2,
+                        right: appPadding / 2,
+                        bottom: appPadding),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time_outlined,
+                              color: black.withOpacity(0.3),
+                            ),
+                            SizedBox(
+                              width: size.width * 0.01,
+                            ),
+                            Text(
+                              style.time.toString() + ' min',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: black.withOpacity(0.3)),
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: primary,
+                              borderRadius: BorderRadius.circular(5.0)),
+                          child: Icon(
+                            Icons.add,
+                            color: white,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-        )
-      ],
+          Positioned(
+            right: 0,
+            top: 0,
+            child: Container(
+              child: Image(
+                width: size.width * 0.3,
+                height: size.height * 0.2,
+                image: AssetImage(style.imageUrl),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -120,7 +127,7 @@ class DiffStyles extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'For Beginners',
                 style: TextStyle(
                   fontSize: 24,
@@ -129,14 +136,10 @@ class DiffStyles extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () async {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
-                  );
+                onTap: () {
+                  Get.to(() => const VideoInfo());
                 },
-                child: Text(
+                child: const Text(
                   'See All',
                   style: TextStyle(
                       fontSize: 18,

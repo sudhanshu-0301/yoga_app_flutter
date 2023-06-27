@@ -36,7 +36,7 @@ class CustomAppBar extends StatelessWidget {
                         child: Center(
                           child: CircleAvatar(
                             backgroundImage: AssetImage(
-                              'assets/images/propic.jpeg',
+                              'assets/images/avatar.png',
                             ),
                           ),
                         ),

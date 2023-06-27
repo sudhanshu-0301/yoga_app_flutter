@@ -7,6 +7,7 @@ import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 import 'package:yoga_app/screens/authentication/getstarted.dart';
 import 'package:yoga_app/screens/authentication/landingscreen.dart';
 import 'package:yoga_app/screens/authentication/login.dart';
+import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       defaultTransition: Transition.leftToRight,
-      home: GetStarted(),
+      home: const GetStarted(),
     );
   }
 }

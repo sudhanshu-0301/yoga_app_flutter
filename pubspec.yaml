@@ -42,6 +42,7 @@ dependencies:
   curved_navigation_bar : ^0.3.4
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
+  video_player:
   
 
 dev_dependencies:
@@ -70,6 +71,7 @@ flutter:
   assets:
     - assets/images/
     - assets/audio/
+    - json/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

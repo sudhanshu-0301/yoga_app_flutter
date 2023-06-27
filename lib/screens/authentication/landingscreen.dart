@@ -102,12 +102,7 @@ class _LandingscreenState extends State<Landingscreen>
           Align(
             alignment: Alignment.center,
             child: GestureDetector(
-              onTap: () async {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                );
-              },
+              onTap: () {Get.to(() => const LoginScreen());},
               child: Container(
                 width: res_width * 0.46,
                 decoration: const BoxDecoration(

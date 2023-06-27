@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yoga_app/screens/authentication/landingscreen.dart';
 import 'package:yoga_app/widget/backgroundcircle_landing.dart';
 import 'package:just_audio/just_audio.dart';
@@ -179,13 +180,7 @@ class _GetStartedState extends State<GetStarted>
                         .merge(const TextStyle(color: Color(0xff28a5da))),
                     key: _key,
                     onSubmit: () async {
-                      // await _player.setAsset('assets/audio/chimeup.mp3');
-                      // _player.play();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Landingscreen()),
-                      );
+                      Get.to(() => const Landingscreen());
                     },
                     innerColor: Color(0xff28a5da),
                     outerColor: Colors.white,

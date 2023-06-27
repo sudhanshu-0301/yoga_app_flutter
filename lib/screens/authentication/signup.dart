@@ -44,122 +44,124 @@ class SignUpscreen extends StatelessWidget {
               SizedBox(
                 height: size.height * 0.01,
               ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: controller.fullName,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Full Name',
-                        suffixIcon: const Icon(
-                          Icons.email_outlined,
-                          size: 25.0,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-                    TextField(
-                      controller: controller.email,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'E-mail',
-                        suffixIcon: const Icon(
-                          Icons.email_outlined,
-                          size: 25.0,
-                          color: Colors.grey,
+              Container(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: controller.fullName,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Full Name',
+                          suffixIcon: const Icon(
+                            Icons.person_outline_rounded,
+                            size: 25.0,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-                    TextField(
-                      controller: controller.gender,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Gender',
-                        suffixIcon: const Icon(
-                          Icons.email_outlined,
-                          size: 25.0,
-                          color: Colors.grey,
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      TextField(
+                        controller: controller.email,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'E-mail',
+                          suffixIcon: const Icon(
+                            Icons.email_outlined,
+                            size: 25.0,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-                    TextField(
-                      controller: controller.phoneNo,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Phone No',
-                        suffixIcon: const Icon(
-                          Icons.email_outlined,
-                          size: 25.0,
-                          color: Colors.grey,
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      TextField(
+                        controller: controller.gender,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Gender',
+                          suffixIcon: const Icon(
+                            Icons.person_outline_rounded,
+                            size: 25.0,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-                    TextField(
-                      controller: controller.password,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        hintText: 'Password',
-                        suffixIcon: const Icon(
-                          Icons.email_outlined,
-                          size: 25.0,
-                          color: Colors.grey,
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      TextField(
+                        controller: controller.phoneNo,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Phone No',
+                          suffixIcon: const Icon(
+                            Icons.numbers,
+                            size: 25.0,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-                    SizedBox(
-                      height: size.height * 0.06,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            SignUpController.instance.registrationUser(
-                                controller.email.text.trim(),
-                                controller.password.text.trim());
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20))),
-                        child: const Text(
-                          'SIGNUP',
-                          style: TextStyle(fontSize: 16),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      TextField(
+                        controller: controller.password,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: 'Password',
+                          suffixIcon: const Icon(
+                            Icons.fingerprint,
+                            size: 25.0,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      SizedBox(
+                        height: size.height * 0.06,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              SignUpController.instance.registrationUser(
+                                  controller.email.text.trim(),
+                                  controller.password.text.trim());
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blueAccent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20))),
+                          child: const Text(
+                            'SIGNUP',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
 
@@ -198,12 +200,7 @@ class SignUpscreen extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
-                              ),
-                            );
+                            Get.to(() => LoginScreen());
                           },
                           child: const Text('Logn-In',
                               style: TextStyle(fontSize: 16))),
