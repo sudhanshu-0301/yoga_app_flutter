@@ -15,8 +15,14 @@ class SignUpscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final controller = Get.put(SignUpController());
+    // final controller = Get.put(SignUpController());
     final _formKey = GlobalKey<FormState>();
+
+    final emailTextController = TextEditingController();
+    final passwordTextController = TextEditingController();
+    final genderTextController = TextEditingController();
+    final fullNameTextController = TextEditingController();
+    final phoneNoTextController = TextEditingController();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -50,7 +56,7 @@ class SignUpscreen extends StatelessWidget {
                   child: Column(
                     children: [
                       TextField(
-                        controller: controller.fullName,
+                        controller: fullNameTextController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey),
@@ -68,7 +74,7 @@ class SignUpscreen extends StatelessWidget {
                         height: size.height * 0.01,
                       ),
                       TextField(
-                        controller: controller.email,
+                        controller: emailTextController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey),
@@ -86,7 +92,7 @@ class SignUpscreen extends StatelessWidget {
                         height: size.height * 0.01,
                       ),
                       TextField(
-                        controller: controller.gender,
+                        controller: genderTextController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey),
@@ -104,7 +110,7 @@ class SignUpscreen extends StatelessWidget {
                         height: size.height * 0.01,
                       ),
                       TextField(
-                        controller: controller.phoneNo,
+                        controller: phoneNoTextController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey),
@@ -122,7 +128,7 @@ class SignUpscreen extends StatelessWidget {
                         height: size.height * 0.01,
                       ),
                       TextField(
-                        controller: controller.password,
+                        controller: passwordTextController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey),
@@ -146,8 +152,8 @@ class SignUpscreen extends StatelessWidget {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               SignUpController.instance.registrationUser(
-                                  controller.email.text.trim(),
-                                  controller.password.text.trim());
+                                  emailTextController.text.trim(),
+                                  passwordTextController.text.trim());
                             }
                           },
                           style: ElevatedButton.styleFrom(
