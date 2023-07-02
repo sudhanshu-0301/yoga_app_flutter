@@ -9,8 +9,10 @@ import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import 'package:yoga_app/screens/calender.dart';
 import 'package:yoga_app/screens/home.dart';
+import 'package:yoga_app/screens/todolist.dart';
 import '../../helper/colors.dart' as color;
 import '../../helper/colors.dart';
+import '../../widget/sidebar.dart';
 import '../info.dart';
 
 class VideoInfo extends StatefulWidget {
@@ -56,6 +58,22 @@ class _VideoInfoState extends State<VideoInfo> {
   Widget build(BuildContext context) {
     int selsctedIconIndex = 0;
     return Scaffold(
+      drawer: SideBar(),
+      appBar: AppBar(
+        backgroundColor: tdBGColor,
+        elevation: 0,
+        foregroundColor: black,
+        title: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+          SizedBox(
+            height: 40,
+            width: 40,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset('assets/images/avatar1.png'),
+            ),
+          ),
+        ]),
+      ),
       body: Container(
         decoration: _playArea == false
             ? BoxDecoration(
@@ -73,35 +91,35 @@ class _VideoInfoState extends State<VideoInfo> {
             _playArea == false
                 ? Container(
                     padding: const EdgeInsets.only(
-                        top: color.appPadding * 2.5,
+                        top: color.appPadding * 2,
                         left: color.appPadding,
                         right: color.appPadding),
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.29,
+                    height: MediaQuery.of(context).size.height * 0.23,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Icon(Icons.arrow_back_ios,
-                                  size: 20, color: color.white),
-                            ),
-                            Expanded(child: Container()),
-                            Icon(
-                              Icons.info_outline,
-                              size: 20,
-                              color: color.white,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        Text('Legs Toning \nand Glutes Workout',
+                        // Row(
+                        //   children: [
+                        //     InkWell(
+                        //       onTap: () {
+                        //         Get.back();
+                        //       },
+                        //       child: const Icon(Icons.arrow_back_ios,
+                        //           size: 20, color: color.white),
+                        //     ),
+                        //     Expanded(child: Container()),
+                        //     const Icon(
+                        //       Icons.info_outline,
+                        //       size: 20,
+                        //       color: color.white,
+                        //     ),
+                        //   ],
+                        // ),
+                        // SizedBox(
+                        //   height: MediaQuery.of(context).size.height * 0.03,
+                        // ),
+                        const Text('Legs Toning \nand Glutes Workout',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -181,39 +199,38 @@ class _VideoInfoState extends State<VideoInfo> {
                       ],
                     ),
                   )
-                : Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          padding:
-                              EdgeInsets.only(top: 30, left: 20, right: 20),
-                          height: 70,
-                          child: Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  Get.back();
-                                },
-                                child: const Icon(
-                                  Icons.arrow_back_ios,
-                                  size: 25,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Expanded(child: Container()),
-                              const Icon(
-                                Icons.info_outline,
-                                size: 20,
-                                color: white,
-                              )
-                            ],
-                          ),
-                        ),
-                        _playView(context),
-                        _controlView(context),
-                      ],
-                    ),
-                  ),
+                : Column(
+                  children: [
+                    // const Padding(padding: EdgeInsets.only(top: 10)),
+                    // Container(
+                    //   padding:
+                    //       const EdgeInsets.only(top: 0, left: 20, right: 20),
+                    //   height: 50,
+                    //   child: Row(
+                    //     children: [
+                    //       InkWell(
+                    //         onTap: () {
+                    //           Get.back();
+                    //         },
+                    //         child: const Icon(
+                    //           Icons.arrow_back_ios,
+                    //           size: 25,
+                    //           color: Colors.white,
+                    //         ),
+                    //       ),
+                    //       Expanded(child: Container()),
+                    //       const Icon(
+                    //         Icons.info_outline,
+                    //         size: 20,
+                    //         color: white,
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                    _playView(context),
+                    _controlView(context),
+                  ],
+                ),
             Expanded(
                 child: Container(
               decoration: const BoxDecoration(
@@ -266,7 +283,7 @@ class _VideoInfoState extends State<VideoInfo> {
             selsctedIconIndex = index;
           });
         },
-        animationDuration: Duration(
+        animationDuration: const Duration(
           milliseconds: 200,
         ),
         items: <Widget>[
@@ -284,7 +301,7 @@ class _VideoInfoState extends State<VideoInfo> {
 
           IconButton(
             onPressed: () {
-              Get.to(() => const CalenderScreen());
+              Get.to(() =>  CalenderScreen());
             },
             icon: Icon(
               Icons.calendar_month_rounded,
@@ -295,7 +312,7 @@ class _VideoInfoState extends State<VideoInfo> {
           
           IconButton(
             onPressed: () {
-              Get.to(() => const HomeScreen());
+              Get.to(() =>  HomeScreen());
             },
             icon: Icon(
               Icons.home_outlined,
@@ -306,7 +323,7 @@ class _VideoInfoState extends State<VideoInfo> {
 
           IconButton(
             onPressed: () {
-              Get.to(() => const CalenderScreen());
+              Get.to(() =>  ToDoList());
             },
             icon: Icon(
               Icons.list_rounded,
@@ -316,7 +333,7 @@ class _VideoInfoState extends State<VideoInfo> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() => const UsersInfo());
+              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
               Icons.person_outline,
@@ -348,18 +365,18 @@ class _VideoInfoState extends State<VideoInfo> {
           data: SliderTheme.of(context).copyWith(
             activeTrackColor: Colors.red.shade700,
             inactiveTrackColor: Colors.red.shade100,
-            trackShape: RoundedRectSliderTrackShape(),
+            trackShape: const RoundedRectSliderTrackShape(),
             trackHeight: 2.0,
-            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
             thumbColor: Colors.redAccent,
             overlayColor: Colors.red.withAlpha(32),
-            overlayShape: RoundSliderOverlayShape(overlayRadius: 20.0),
-            tickMarkShape: RoundSliderTickMarkShape(),
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 20.0),
+            tickMarkShape: const RoundSliderTickMarkShape(),
             activeTickMarkColor: Colors.red[700],
             inactiveTickMarkColor: Colors.red[100],
-            valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+            valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
             valueIndicatorColor: Colors.redAccent,
-            valueIndicatorTextStyle: TextStyle(
+            valueIndicatorTextStyle: const TextStyle(
               color: Colors.white,
             ),
           ),
@@ -390,17 +407,17 @@ class _VideoInfoState extends State<VideoInfo> {
         ),
         Container(
           height: 40,
-          margin: EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(bottom: 10),
           color: color.AppColor.gradientSecond,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
                   child: Container(
                     decoration:
-                        BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                        const BoxDecoration(shape: BoxShape.circle, boxShadow: [
                       BoxShadow(
                           offset: Offset(0.0, 0.0),
                           blurRadius: 4.0,
@@ -429,20 +446,20 @@ class _VideoInfoState extends State<VideoInfo> {
                   } else {
                     Get.snackbar("Video", "",
                         snackPosition: SnackPosition.BOTTOM,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.face,
                           size: 30,
                           color: white,
                         ),
                         backgroundColor: color.AppColor.gradientSecond,
                         colorText: Colors.white,
-                        messageText: Text(
+                        messageText: const Text(
                           "No more previous videos to play",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ));
                   }
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.fast_rewind,
                   size: 36,
                   color: Colors.white,
@@ -476,30 +493,31 @@ class _VideoInfoState extends State<VideoInfo> {
                   } else {
                     Get.snackbar("Video", "",
                         snackPosition: SnackPosition.BOTTOM,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.face,
                           size: 30,
                           color: white,
                         ),
                         backgroundColor: color.AppColor.gradientSecond,
                         colorText: Colors.white,
-                        messageText: Text(
+                        messageText: const Text(
                           "You finished watching all the videos. Congrats!",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ));
                   }
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.fast_forward,
                   size: 36,
                   color: Colors.white,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 12),
                 child: Text(
                   "$mins:$secs",
-                  style: TextStyle(
+                  style: const TextStyle(
+                    fontSize: 16,
                     color: white,
                     shadows: <Shadow>[
                       Shadow(
@@ -526,7 +544,7 @@ class _VideoInfoState extends State<VideoInfo> {
         child: VideoPlayer(controller),
       );
     } else {
-      return AspectRatio(
+      return const AspectRatio(
           aspectRatio: 16 / 9,
           child: Center(
               child: Text(
@@ -594,6 +612,7 @@ class _VideoInfoState extends State<VideoInfo> {
       old.pause();
     }
     setState(() {});
+    // ignore: avoid_single_cascade_in_expression_statements
     controller
       ..initialize().then((_) {
         old?.dispose();
@@ -610,7 +629,7 @@ class _VideoInfoState extends State<VideoInfo> {
 
   _listView() {
     return ListView.builder(
-      padding: EdgeInsets.symmetric(horizontal: appPadding),
+      padding: const EdgeInsets.symmetric(horizontal: appPadding),
       itemCount: videoInfo.length,
       itemBuilder: (_, int index) {
         return GestureDetector(
@@ -647,19 +666,19 @@ class _VideoInfoState extends State<VideoInfo> {
                     fit: BoxFit.cover),
               ),
             ),
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   videoInfo[index]["title"],
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(top: 13),
+                    padding: const EdgeInsets.only(top: 13),
                     child: Text(
                       videoInfo[index]["time"],
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ))
               ],
             )
@@ -674,16 +693,16 @@ class _VideoInfoState extends State<VideoInfo> {
               width: 80,
               height: 20,
               decoration: BoxDecoration(
-                  color: Color(0xFFeaeefc),
+                  color: const Color(0xFFeaeefc),
                   borderRadius: BorderRadius.circular(10)),
-              child: Center(
+              child: const Center(
                 child: Text(
                   "15 secs",
                   style: TextStyle(color: Color(0xff839fed)),
                 ),
               ),
             ),
-            Text(
+            const Text(
               "  --------------------------------------------------",
               style: TextStyle(color: Color(0xFF839fed)),
             )

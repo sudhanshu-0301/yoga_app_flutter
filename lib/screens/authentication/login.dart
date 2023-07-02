@@ -1,13 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/authentication/signup.dart';
 import 'package:yoga_app/screens/home.dart';
-import 'package:yoga_app/widget/login_credential.dart';
-import 'package:yoga_app/screens/authentication/signup.dart';
 
 import '../../widget/backgroundImage_login.dart';
 import '../../widget/forgetpasswordbuttonwidget.dart';
@@ -23,6 +20,38 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool passwordVisible = false;
+
+  //  text controller
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
+
+  // login user logic
+  void logUserIn() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailTextController.text,
+        password: passwordTextController.text,
+      );
+
+      // ignore: use_build_context_synchronously
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      if (e.code == 'user-not-found') {
+        debugPrint('User not found');
+      } else if (e.code == 'wrong-password') {
+        debugPrint('wrong password');
+      }
+    }
+  }
 
   @override
   void initState() {
@@ -40,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // part one --- starting image-----
-            BackgroundImage(),
+            const BackgroundImage(),
 
             // part two ----form----
             SizedBox(
@@ -49,14 +78,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
             Form(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: appPadding * 0.75),
+                padding: const EdgeInsets.symmetric(horizontal: appPadding * 0.75),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextField(
+                      controller: emailTextController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
+                          borderSide: const BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         hintText: 'E-Mail',
@@ -73,9 +103,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     TextField(
+                      controller: passwordTextController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey),
+                          borderSide: const BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         hintText: 'Password',
@@ -96,6 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     // SizedBox(height: size.height * 0.005),
+
                     // ----------forget pasword section------------
                     Align(
                       alignment: Alignment.centerRight,
@@ -163,12 +195,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Text('Forget Password!'),
                       ),
                     ),
+
                     SizedBox(
                       height: size.height * 0.06,
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.to(() => HomeScreen());
+                          logUserIn();
+                          // Get.to(() => const HomeScreen());
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueAccent,

@@ -1,17 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:yoga_app/firebase_options.dart';
 import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 import 'package:yoga_app/screens/authentication/getstarted.dart';
-import 'package:yoga_app/screens/authentication/landingscreen.dart';
-import 'package:yoga_app/screens/authentication/login.dart';
-import 'package:yoga_app/screens/video%20player/videoinfo.dart';
+import 'package:yoga_app/screens/calender.dart';
+import 'package:yoga_app/screens/home.dart';
+import 'package:yoga_app/screens/todolist.dart';
 
-void main() {
+
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthenticationRepository()));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       defaultTransition: Transition.leftToRight,
-      home: const GetStarted(),
+      home:  const AuthPage(),
     );
   }
 }

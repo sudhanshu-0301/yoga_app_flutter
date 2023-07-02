@@ -1,16 +1,15 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/calender.dart';
 import 'package:yoga_app/screens/todolist.dart';
 import 'package:yoga_app/widget/listcourses.dart';
 
-import '../widget/custom_navbar_hometop.dart';
 import '../widget/diffstyles.dart';
+import '../widget/sidebar.dart';
 import 'info.dart';
 import 'video player/videoinfo.dart';
 
@@ -22,16 +21,61 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final user = FirebaseAuth.instance.currentUser!;
   int selsctedIconIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideBar(),
+      appBar: AppBar(
+        backgroundColor: tdBGColor,
+        elevation: 0,
+        foregroundColor: black,
+        title: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+          SizedBox(
+            height: 40,
+            width: 40,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset('assets/images/avatar1.png'),
+            ),
+          ),
+        ]),
+      ),
       backgroundColor: white,
-      body: Padding(
-        padding: EdgeInsets.only(top: appPadding * 2),
-        child: Column(
-          children: [CustomAppBar(), DiffStyles(), Courses()],
-        ),
+      body: Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            // height: MediaQuery.of(context).size.height * 0.04,
+          ),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
+          //     const Text(
+          //       'Welcome Back...',
+          //       style: TextStyle(
+          //           fontSize: 30,
+          //           fontWeight: FontWeight.w400,
+          //           color: primary,
+          //           fontStyle: FontStyle.italic),
+          //     ),
+          //     Text(
+          //       user.email!,
+          //       style: const TextStyle(
+          //         fontSize: 22,
+          //         fontWeight: FontWeight.w300,
+          //         color: primary,
+          //       ),
+          //     )
+          //   ],
+          // ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.01,
+          ),
+          DiffStyles(),
+          Courses()
+        ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
@@ -44,11 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
             selsctedIconIndex = index;
           });
         },
-        animationDuration: Duration(
+        animationDuration: const Duration(
           milliseconds: 200,
         ),
         items: <Widget>[
-
           IconButton(
             onPressed: () {
               Get.to(() => const VideoInfo());
@@ -59,10 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
               color: selsctedIconIndex == 0 ? white : black,
             ),
           ),
-
           IconButton(
             onPressed: () {
-              Get.to(() => const CalenderScreen());
+              Get.to(() =>  CalenderScreen());
             },
             icon: Icon(
               Icons.calendar_month_rounded,
@@ -70,10 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
               color: selsctedIconIndex == 1 ? white : black,
             ),
           ),
-          
           IconButton(
             onPressed: () {
-              Get.to(() => const HomeScreen());
+              Get.to(() => HomeScreen());
             },
             icon: Icon(
               Icons.home_outlined,
@@ -81,10 +122,9 @@ class _HomeScreenState extends State<HomeScreen> {
               color: selsctedIconIndex == 2 ? white : black,
             ),
           ),
-
           IconButton(
             onPressed: () {
-              Get.to(() => const ToDoList());
+              Get.to(() => ToDoList());
             },
             icon: Icon(
               Icons.list_rounded,
@@ -94,15 +134,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() => UsersInfo());
+              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
-              Icons.person_outline,
+               Icons.monitor_weight_rounded,
               size: 25,
               color: selsctedIconIndex == 4 ? white : black,
             ),
           ),
-          
         ],
       ),
     );
