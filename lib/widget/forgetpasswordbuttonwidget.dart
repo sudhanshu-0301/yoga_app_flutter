@@ -16,7 +16,7 @@ class forgetpasswordbtnwidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap:onTap,
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/authentication/signup.dart';
 import 'package:yoga_app/screens/home.dart';
+import 'package:yoga_app/helper/colors.dart';
 
 import '../../widget/backgroundImage_login.dart';
 import '../../widget/forgetpasswordbuttonwidget.dart';
@@ -78,7 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
             Form(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: appPadding * 0.75),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: appPadding * 0.75),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -138,61 +140,70 @@ class _LoginScreenState extends State<LoginScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)),
                             context: context,
-                            builder: (context) => Container(
-                              padding: const EdgeInsets.all(appPadding),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
-                                  const Text(
-                                    'Make Selection!',
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.01,
-                                  ),
-                                  const Text(
-                                    'Select one of the options given below to reset your password.',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.04,
-                                  ),
-                                  forgetpasswordbtnwidget(
-                                    btnIcon: Icons.mail_outline_rounded,
-                                    title: 'E-Mail',
-                                    subTitle: 'Reset via Mail varification.',
-                                    onTap: () {
-                                      Get.to(() => ForgetPasswordWithMail());
-                                    },
-                                  ),
+                            builder: (context) => Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.all(appPadding),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                        // height: size.height * 0.03,
+                                        ),
+                                    const Text(
+                                      'Make Selection!',
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      height: size.height * 0.01,
+                                    ),
+                                    const Text(
+                                      'Select one of the options given below to reset your password.',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    SizedBox(
+                                      height: size.height * 0.04,
+                                    ),
+                                    forgetpasswordbtnwidget(
+                                      btnIcon: Icons.mail_outline_rounded,
+                                      title: 'E-Mail',
+                                      subTitle:
+                                          'Reset via E-Mail verification.',
+                                      onTap: () {
+                                        Get.to(() => ForgetPasswordWithMail());
+                                      },
+                                    ),
 
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
+                                    SizedBox(
+                                      height: size.height * 0.03,
+                                    ),
 
-                                  forgetpasswordbtnwidget(
-                                    btnIcon: Icons.mobile_friendly_rounded,
-                                    title: 'Phonr No',
-                                    subTitle:
-                                        'Reset via Phone No varification.',
-                                    onTap: () {
-                                      Get.to(() => ForgetPasswordWithPhone());
-                                    },
-                                  ),
-                                  // ------------------forget password end----------------
-                                ],
+                                    Expanded(
+                                      child: forgetpasswordbtnwidget(
+                                        btnIcon: Icons.mobile_friendly_rounded,
+                                        title: 'Phone Number',
+                                        subTitle:
+                                            'Reset via Phone No verification.',
+                                        onTap: () {
+                                          Get.to(
+                                              () => ForgetPasswordWithPhone());
+                                        },
+                                      ),
+                                    ),
+                                    // ------------------forget password end----------------
+                                  ],
+                                ),
                               ),
                             ),
                           );
                         },
-                        child: const Text('Forget Password!'),
+                        child: const Text(
+                          'Forgot Password?',
+                          style: TextStyle(color: Colors.blueGrey),
+                        ),
                       ),
                     ),
 
@@ -205,7 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           // Get.to(() => const HomeScreen());
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: Colors.blue,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20))),
                         child:

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,14 +18,42 @@ class SideBar extends StatefulWidget {
 }
 
 class _SideBarState extends State<SideBar> {
+  Map<String, dynamic> fetchedData = <String, dynamic>{};
+  @override
+  initState() {
+    super.initState();
+    print('init state called');
+    getData();
+  }
+
+  void getData() async {
+    print('user email: ' + user.email!);
+    fetchedData = await getUser(user.email!);
+    print('fetched data: ' + fetchedData.toString());
+    setState(() {});
+  }
+
   void logUserOut() {
     FirebaseAuth.instance.signOut();
-    
+
     // Get.to(() => const GetStarted());
-    
   }
 
   final user = FirebaseAuth.instance.currentUser!;
+
+  //METHOD TO FETCH DATA FROM FIREBASE
+  Future<Map<String, dynamic>> getUser(String email) async {
+    try {
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('users');
+      final snapshot = await users.doc(email).get();
+      final data = snapshot.data() as Map<String, dynamic>;
+      print('data: ' + data.toString());
+      return data;
+    } catch (e) {
+      return {'Error_fetching_user': 'Error fetching user'};
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +64,8 @@ class _SideBarState extends State<SideBar> {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text('Sudhanshu'),
+            accountName: Text(fetchedData['full_name'] ?? 'No Name Found'),
+            // accountName: Text('Test Name'),
             accountEmail: Text(user.email!),
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -61,7 +91,7 @@ class _SideBarState extends State<SideBar> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              Get.to(() =>  HomeScreen());
+              Get.to(() => HomeScreen());
             },
           ),
           ListTile(
@@ -87,7 +117,7 @@ class _SideBarState extends State<SideBar> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              Get.to(() =>  CalenderScreen());
+              Get.to(() => CalenderScreen());
             },
           ),
           ListTile(

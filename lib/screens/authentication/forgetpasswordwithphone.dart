@@ -7,7 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/authentication/login.dart';
 
-import 'otpvarification.dart';
+import 'otpverification.dart';
 
 class ForgetPasswordWithPhone extends StatelessWidget {
   const ForgetPasswordWithPhone({super.key});
@@ -74,7 +74,7 @@ class ForgetPasswordWithPhone extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {Get.to(() => OTPScreen());},
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: Colors.blue,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20))),
                         child: const Text(

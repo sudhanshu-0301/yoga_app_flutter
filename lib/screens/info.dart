@@ -167,7 +167,7 @@ class _BMICalculator extends State<BMICalculator> {
                                           : status == 'Obesity class 1'
                                               ? Colors.orange
                                               : status == 'Obesity class 2'
-                                                  ? Colors.deepOrangeAccent
+                                                  ? Colors.deepOrange
                                                   : status == 'Obesity class 3'
                                                       ? Colors.red
                                                       : null),
@@ -190,7 +190,7 @@ class _BMICalculator extends State<BMICalculator> {
                                               : status == 'Obesity class 1'
                                                   ? Colors.orange
                                                   : status == 'Obesity class 2'
-                                                      ? Colors.deepOrangeAccent
+                                                      ? Colors.deepOrange
                                                       : status ==
                                                               'Obesity class 3'
                                                           ? Colors.red
@@ -285,7 +285,7 @@ class _BMICalculator extends State<BMICalculator> {
                         Expanded(
                           child: Container(
                             height: 25,
-                            color: Colors.deepOrangeAccent,
+                            color: Colors.deepOrange,
                             child: const Center(
                                 child: Text('Obesity \nclass 2',
                                     style: TextStyle(

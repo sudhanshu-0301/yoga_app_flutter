@@ -23,7 +23,7 @@ final styles = [_standStyle,_sittingStyle,_legCrossStyle];
 
 final _course1 = Course(
   imageUrl: 'assets/images/course1.jpg',
-  name: 'Advance Stretchings',
+  name: 'Advance Stretching',
   time: 45,
   students: 'Advanced'
 );

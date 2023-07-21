@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +19,11 @@ class _SignUpscreenState extends State<SignUpscreen> {
   // text controller
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
-  final genderTextController = TextEditingController();
+  final ageTextController = TextEditingController();
   final fullNameTextController = TextEditingController();
   final phoneNoTextController = TextEditingController();
+  final heightTextController = TextEditingController();
+  final weightTextController = TextEditingController();
 
   // on submit signup button logic
   void signUserUp() async {
@@ -38,6 +41,12 @@ class _SignUpscreenState extends State<SignUpscreen> {
         email: emailTextController.text,
         password: passwordTextController.text,
       );
+      addUserDetails(
+          fullName: fullNameTextController.text,
+          age: ageTextController.text,
+          phoneNo: phoneNoTextController.text,
+          height: heightTextController.text,
+          weight: weightTextController.text);
 
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
@@ -49,6 +58,21 @@ class _SignUpscreenState extends State<SignUpscreen> {
         print('wrong password');
       }
     }
+  }
+
+  Future addUserDetails(
+      {required String fullName,
+      required String age,
+      required String phoneNo,
+      required String height,
+      required String weight}) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'full_name': fullName,
+      'age': age,
+      'phone_number': phoneNo,
+      'height': height,
+      'weight': weight,
+    });
   }
 
   @override
@@ -73,7 +97,7 @@ class _SignUpscreenState extends State<SignUpscreen> {
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               const Text(
-                'Create your profile and start your Journey.',
+                'Create your profile and begin your Fitness Journey.',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
               ),
 
@@ -122,13 +146,31 @@ class _SignUpscreenState extends State<SignUpscreen> {
                       height: size.height * 0.01,
                     ),
                     TextField(
-                      controller: genderTextController,
+                      controller: passwordTextController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        hintText: 'Gender',
+                        hintText: 'Password',
+                        suffixIcon: const Icon(
+                          Icons.fingerprint,
+                          size: 25.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    TextField(
+                      controller: ageTextController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        hintText: 'Age',
                         suffixIcon: const Icon(
                           Icons.person_outline_rounded,
                           size: 25.0,
@@ -158,15 +200,33 @@ class _SignUpscreenState extends State<SignUpscreen> {
                       height: size.height * 0.01,
                     ),
                     TextField(
-                      controller: passwordTextController,
+                      controller: heightTextController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        hintText: 'Password',
+                        hintText: 'Height',
                         suffixIcon: const Icon(
-                          Icons.fingerprint,
+                          Icons.accessibility_outlined,
+                          size: 25.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.01,
+                    ),
+                    TextField(
+                      controller: weightTextController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        hintText: 'Weight',
+                        suffixIcon: const Icon(
+                          Icons.assignment_ind_outlined,
                           size: 25.0,
                           color: Colors.grey,
                         ),
@@ -180,15 +240,10 @@ class _SignUpscreenState extends State<SignUpscreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          // if (formKey.currentState!.validate()) {
-                          //   SignUpController.instance.registrationUser(
-                          //       emailTextController.text.trim(),
-                          //       passwordTextController.text.trim());
-                          // }
                           signUserUp();
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: Colors.blue,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20))),
                         child: const Text(
@@ -238,7 +293,7 @@ class _SignUpscreenState extends State<SignUpscreen> {
                           onPressed: () {
                             Get.to(() => LoginScreen());
                           },
-                          child: const Text('Logn-In',
+                          child: const Text('Log-In',
                               style: TextStyle(fontSize: 16))),
                     ],
                   )

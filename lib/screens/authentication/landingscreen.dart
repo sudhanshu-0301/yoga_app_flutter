@@ -88,7 +88,7 @@ class _LandingscreenState extends State<Landingscreen>
           Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: Text(
-              "The time that leads to mastery is dependent on the intensity of our ffocus.",
+              "The time that leads to mastery is dependent on the intensity of our focus.",
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
@@ -102,30 +102,34 @@ class _LandingscreenState extends State<Landingscreen>
           Align(
             alignment: Alignment.center,
             child: GestureDetector(
-              onTap: () {Get.to(() => const LoginScreen());},
-              child: Container(
-                width: res_width * 0.46,
-                decoration: const BoxDecoration(
-                    color: kprimarycolor,
-                    borderRadius: BorderRadius.all(Radius.circular(13))),
-                child: Padding(
-                  padding: EdgeInsets.all(13.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // const Icon(
-                      //   Icons.restart_alt,
-                      //   color: Colors.white,
-                      // ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text("Log-in/Sign-up",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .merge(TextStyle(color: Colors.white)))
-                    ],
+              onTap: () {
+                Get.to(() => const LoginScreen());
+              },
+              child: Expanded(
+                child: Container(
+                  width: res_width * 0.46,
+                  decoration: const BoxDecoration(
+                      color: kprimarycolor,
+                      borderRadius: BorderRadius.all(Radius.circular(13))),
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // const Icon(
+                        //   Icons.restart_alt,
+                        //   color: Colors.white,
+                        // ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text("Get Started",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .merge(TextStyle(color: Colors.white)))
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -43,63 +43,65 @@ class Courses extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: size.width * 0.4,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: appPadding / 2, top: appPadding / 1.5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          course.name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                Expanded(
+                  child: Container(
+                    width: size.width * 0.4,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: appPadding / 2, top: appPadding / 1.5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            course.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                            maxLines: 2,
                           ),
-                          maxLines: 2,
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.folder_open_rounded,
-                              color: black.withOpacity(0.3),
-                            ),
-                            SizedBox(
-                              width: size.width * 0.01,
-                            ),
-                            Text(
-                              course.students,
-                              style: TextStyle(
+                          SizedBox(
+                            height: size.height * 0.01,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.folder_open_rounded,
                                 color: black.withOpacity(0.3),
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.access_time_outlined,
-                              color: black.withOpacity(0.3),
-                            ),
-                            SizedBox(
-                              width: size.width * 0.01,
-                            ),
-                            Text(
-                              course.time.toString() + ' min',
-                              style: TextStyle(
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Text(
+                                course.students,
+                                style: TextStyle(
+                                  color: black.withOpacity(0.3),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: size.height * 0.01,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.access_time_outlined,
                                 color: black.withOpacity(0.3),
                               ),
-                            )
-                          ],
-                        ),
-                      ],
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Text(
+                                course.time.toString() + ' min',
+                                style: TextStyle(
+                                  color: black.withOpacity(0.3),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 )

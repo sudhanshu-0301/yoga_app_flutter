@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Map<String, dynamic> fetchedData = <String, dynamic>{};
+
   final user = FirebaseAuth.instance.currentUser!;
-  int selsctedIconIndex = 2;
+  int selectedIconIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,29 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            // height: MediaQuery.of(context).size.height * 0.04,
-          ),
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: [
-          //     const Text(
-          //       'Welcome Back...',
-          //       style: TextStyle(
-          //           fontSize: 30,
-          //           fontWeight: FontWeight.w400,
-          //           color: primary,
-          //           fontStyle: FontStyle.italic),
-          //     ),
-          //     Text(
-          //       user.email!,
-          //       style: const TextStyle(
-          //         fontSize: 22,
-          //         fontWeight: FontWeight.w300,
-          //         color: primary,
-          //       ),
-          //     )
-          //   ],
-          // ),
+              // height: MediaQuery.of(context).size.height * 0.04,
+              ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
           ),
@@ -79,13 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        index: selsctedIconIndex,
-        buttonBackgroundColor: primary,
+        index: selectedIconIndex,
+        buttonBackgroundColor: Colors.blue.shade400,
         height: 50,
-        color: white,
+        color: Colors.grey[200]!,
         onTap: (index) {
           setState(() {
-            selsctedIconIndex = index;
+            selectedIconIndex = index;
           });
         },
         animationDuration: const Duration(
@@ -99,17 +81,17 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(
               Icons.play_arrow_outlined,
               size: 25,
-              color: selsctedIconIndex == 0 ? white : black,
+              color: selectedIconIndex == 0 ? white : black,
             ),
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  CalenderScreen());
+              Get.to(() => CalenderScreen());
             },
             icon: Icon(
               Icons.calendar_month_rounded,
               size: 25,
-              color: selsctedIconIndex == 1 ? white : black,
+              color: selectedIconIndex == 1 ? white : black,
             ),
           ),
           IconButton(
@@ -119,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(
               Icons.home_outlined,
               size: 25,
-              color: selsctedIconIndex == 2 ? white : black,
+              color: selectedIconIndex == 2 ? white : black,
             ),
           ),
           IconButton(
@@ -129,17 +111,17 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(
               Icons.list_rounded,
               size: 25,
-              color: selsctedIconIndex == 3 ? white : black,
+              color: selectedIconIndex == 3 ? white : black,
             ),
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  BMICalculator());
+              Get.to(() => BMICalculator());
             },
             icon: Icon(
-               Icons.monitor_weight_rounded,
+              Icons.monitor_weight_rounded,
               size: 25,
-              color: selsctedIconIndex == 4 ? white : black,
+              color: selectedIconIndex == 4 ? white : black,
             ),
           ),
         ],
