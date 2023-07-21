@@ -9,9 +9,8 @@ import '../widget/sidebar.dart';
 import '../widget/todoitem.dart';
 
 import '../helper/colors.dart';
-import 'calender.dart';
 import 'home.dart';
-import 'info.dart';
+import 'bmicalculator.dart';
 import 'video player/videoinfo.dart';
 
 class ToDoList extends StatefulWidget {
@@ -178,10 +177,10 @@ class _ToDoList extends State<ToDoList> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  CalenderScreen());
+              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
-              Icons.calendar_month_rounded,
+              Icons.monitor_weight_outlined,
               size: 25,
               color: selsctedIconIndex == 1 ? white : black,
             ),
@@ -208,7 +207,6 @@ class _ToDoList extends State<ToDoList> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
               Icons.person_outline,

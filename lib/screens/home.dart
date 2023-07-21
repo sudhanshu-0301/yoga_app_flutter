@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
-import 'package:yoga_app/screens/calender.dart';
 import 'package:yoga_app/screens/todolist.dart';
 import 'package:yoga_app/widget/listcourses.dart';
 
 import '../widget/diffstyles.dart';
 import '../widget/sidebar.dart';
-import 'info.dart';
+import 'bmicalculator.dart';
 import 'video player/videoinfo.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -104,10 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  CalenderScreen());
+              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
-              Icons.calendar_month_rounded,
+              Icons.monitor_weight_outlined,
               size: 25,
               color: selsctedIconIndex == 1 ? white : black,
             ),
@@ -134,10 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  BMICalculator());
+              
             },
             icon: Icon(
-               Icons.monitor_weight_rounded,
+               Icons.person_2_rounded,
               size: 25,
               color: selsctedIconIndex == 4 ? white : black,
             ),

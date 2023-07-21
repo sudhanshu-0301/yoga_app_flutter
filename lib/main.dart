@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yoga_app/firebase_options.dart';
 import 'package:yoga_app/screens/authentication/authentication_repo.dart';
-import 'package:yoga_app/screens/authentication/getstarted.dart';
-import 'package:yoga_app/screens/calender.dart';
-import 'package:yoga_app/screens/home.dart';
-import 'package:yoga_app/screens/todolist.dart';
 
 
 void main() async{

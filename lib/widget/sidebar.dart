@@ -2,12 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
-import 'package:yoga_app/screens/authentication/getstarted.dart';
 import 'package:yoga_app/screens/home.dart';
 import 'package:yoga_app/screens/todolist.dart';
 import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 
-import '../screens/calender.dart';
 
 class SideBar extends StatefulWidget {
   SideBar({super.key});
@@ -87,7 +85,7 @@ class _SideBarState extends State<SideBar> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              Get.to(() =>  CalenderScreen());
+              
             },
           ),
           ListTile(

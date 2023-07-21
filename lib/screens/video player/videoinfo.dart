@@ -7,13 +7,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
-import 'package:yoga_app/screens/calender.dart';
 import 'package:yoga_app/screens/home.dart';
 import 'package:yoga_app/screens/todolist.dart';
 import '../../helper/colors.dart' as color;
 import '../../helper/colors.dart';
 import '../../widget/sidebar.dart';
-import '../info.dart';
+import '../bmicalculator.dart';
 
 class VideoInfo extends StatefulWidget {
   const VideoInfo({super.key});
@@ -301,10 +300,10 @@ class _VideoInfoState extends State<VideoInfo> {
 
           IconButton(
             onPressed: () {
-              Get.to(() =>  CalenderScreen());
+              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
-              Icons.calendar_month_rounded,
+              Icons.monitor_weight_outlined,
               size: 25,
               color: selsctedIconIndex == 1 ? white : black,
             ),
@@ -333,7 +332,6 @@ class _VideoInfoState extends State<VideoInfo> {
           ),
           IconButton(
             onPressed: () {
-              Get.to(() =>  BMICalculator());
             },
             icon: Icon(
               Icons.person_outline,
