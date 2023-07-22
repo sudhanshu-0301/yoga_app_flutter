@@ -60,7 +60,7 @@ class _GetStartedState extends State<GetStarted>
           Align(
             alignment: Alignment.center,
             child: Text(
-                "It's not how much we give but\nhow much love we put into giving.",
+                "In asana practice we learn to cherish each breath, to cherish every cell in our bodies. The time we spend on the mat is love in action.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
@@ -138,30 +138,30 @@ class _GetStartedState extends State<GetStarted>
               ],
             ),
           ),
-          GestureDetector(
-            onPanUpdate: (details) {
-              RenderBox getBox = context.findRenderObject() as RenderBox;
-              setState(() {
-                offset = getBox.localToGlobal(details.globalPosition);
-                charactermoving = true;
-              });
-            },
-            onPanEnd: (details) {
-              setState(() {
-                offset = const Offset(120, 0);
-                charactermoving = false;
-              });
-            },
-            child: SizedBox(
-              height: 44,
-              child: !charactermoving
-                  ? Image.asset(
-                      'assets/images/left-and-right-arrows.png',
-                      color: Colors.white,
-                    )
-                  : const SizedBox(),
-            ),
-          ),
+          // GestureDetector(
+          //   onPanUpdate: (details) {
+          //     RenderBox getBox = context.findRenderObject() as RenderBox;
+          //     setState(() {
+          //       offset = getBox.localToGlobal(details.globalPosition);
+          //       charactermoving = true;
+          //     });
+          //   },
+          //   onPanEnd: (details) {
+          //     setState(() {
+          //       offset = const Offset(120, 0);
+          //       charactermoving = false;
+          //     });
+          //   },
+          //   child: SizedBox(
+          //     height: 44,
+          //     child: !charactermoving
+          //         ? Image.asset(
+          //             'assets/images/left-and-right-arrows.png',
+          //             color: Colors.white,
+          //           )
+          //         : const SizedBox(),
+          //   ),
+          // ),
           const SizedBox(
             height: 20,
           ),

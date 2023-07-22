@@ -88,7 +88,7 @@ class _LandingscreenState extends State<Landingscreen>
           Padding(
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: Text(
-              "The time that leads to mastery is dependent on the intensity of our ffocus.",
+              "The time that leads to mastery is dependent on the intensity of our focus.",
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme

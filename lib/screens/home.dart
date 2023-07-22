@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Get.to(() => InfoPage());
             },
             icon: Icon(
-              Icons.person_2_rounded,
+              Icons.person_outline,
               size: 25,
               color: selsctedIconIndex == 4 ? white : black,
             ),

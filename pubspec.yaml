@@ -44,6 +44,7 @@ dependencies:
   firebase_auth: ^4.6.3
   video_player:
   cloud_firestore: ^4.8.3 
+  flutter_svg: ^0.22.0
   
 
 dev_dependencies:
@@ -98,6 +99,16 @@ flutter:
     - family: UbuntuLight
       fonts:
         - asset: assets/fonts/Ubuntu-Light.ttf
+    - family: PTSerif-Regular
+      fonts:
+        - asset: assets\fonts\PTSerif-Regular.ttf
+    - family: PTSerif-Bold
+      fonts:
+        - asset: assets/fonts/PTSerif-Bold.ttf
+    - family: PTSerif-Italic
+      fonts:
+        - asset: assets/fonts/PTSerif-Italic.ttf
+    
   # fonts:
   #   - family: Schyler
   #     fonts:

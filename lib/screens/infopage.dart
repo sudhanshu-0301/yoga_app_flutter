@@ -6,11 +6,11 @@ import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/todolist.dart';
 
 import '../controller/get_data_controller.dart';
+import '../widget/profile_body.dart';
 import '../widget/sidebar.dart';
 import 'bmicalculator.dart';
 import 'home.dart';
 import 'video player/videoinfo.dart';
-import 'infopage.dart';
 
 class InfoPage extends StatefulWidget {
   const InfoPage({super.key});
@@ -20,6 +20,8 @@ class InfoPage extends StatefulWidget {
 }
 
 class _InfoPageState extends State<InfoPage> {
+  final DataController controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     int selsctedIconIndex = 4;
@@ -42,9 +44,16 @@ class _InfoPageState extends State<InfoPage> {
         ]),
       ),
       body: SingleChildScrollView(
-        child: Container(),
+        child: ProfilePage(
+          phoneNo: controller.userProfileData['phoneNo'],
+          name: controller.userProfileData['userName'],
+          email: controller.userProfileData['email'],
+          weight: controller.userProfileData['weight'],
+          height: controller.userProfileData['height'],
+          age: controller.userProfileData['age'],
+          profileImageURL: 'assets/images/avatar1.png',
+        ),
       ),
-
 
       // bottom navbar
       bottomNavigationBar: CurvedNavigationBar(

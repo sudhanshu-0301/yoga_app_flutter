@@ -13,6 +13,7 @@ import '../../helper/colors.dart' as color;
 import '../../helper/colors.dart';
 import '../../widget/sidebar.dart';
 import '../bmicalculator.dart';
+import '../infopage.dart';
 
 class VideoInfo extends StatefulWidget {
   const VideoInfo({super.key});
@@ -332,6 +333,7 @@ class _VideoInfoState extends State<VideoInfo> {
           ),
           IconButton(
             onPressed: () {
+              Get.to(() => InfoPage());
             },
             icon: Icon(
               Icons.person_outline,

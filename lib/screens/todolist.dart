@@ -11,6 +11,7 @@ import '../widget/todoitem.dart';
 import '../helper/colors.dart';
 import 'home.dart';
 import 'bmicalculator.dart';
+import 'infopage.dart';
 import 'video player/videoinfo.dart';
 
 class ToDoList extends StatefulWidget {
@@ -206,7 +207,7 @@ class _ToDoList extends State<ToDoList> {
             ),
           ),
           IconButton(
-            onPressed: () {
+            onPressed: () {Get.to(() => InfoPage());
             },
             icon: Icon(
               Icons.person_outline,

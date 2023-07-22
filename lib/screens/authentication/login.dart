@@ -78,7 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
             Form(
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: appPadding * 0.75),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: appPadding * 0.75),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -192,7 +193,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         },
-                        child: const Text('Forget Password!'),
+                        child: const Text(
+                          'Forget Password!',
+                          style: TextStyle(color: Colors.grey),
+                        ),
                       ),
                     ),
 

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../helper/colors.dart';
 import '../widget/sidebar.dart';
 import 'home.dart';
+import 'infopage.dart';
 import 'todolist.dart';
 import 'video player/videoinfo.dart';
 import 'dart:math';
@@ -412,7 +413,9 @@ class _BMICalculator extends State<BMICalculator> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => InfoPage());
+            },
             icon: Icon(
               Icons.person_outline,
               size: 25,
