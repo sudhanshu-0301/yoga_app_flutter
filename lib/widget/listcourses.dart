@@ -62,22 +62,24 @@ class Courses extends StatelessWidget {
                         SizedBox(
                           height: size.height * 0.01,
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.folder_open_rounded,
-                              color: black.withOpacity(0.3),
-                            ),
-                            SizedBox(
-                              width: size.width * 0.01,
-                            ),
-                            Text(
-                              course.students,
-                              style: TextStyle(
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.folder_open_rounded,
                                 color: black.withOpacity(0.3),
                               ),
-                            )
-                          ],
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Text(
+                                course.students,
+                                style: TextStyle(
+                                  color: black.withOpacity(0.3),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: size.height * 0.01,

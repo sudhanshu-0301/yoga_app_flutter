@@ -35,7 +35,7 @@ class _ToDoList extends State<ToDoList> {
   Widget build(BuildContext context) {
     int selsctedIconIndex = 3;
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[100],
       drawer: SideBar(),
       appBar: AppBar(
         backgroundColor: tdBGColor,
@@ -155,7 +155,7 @@ class _ToDoList extends State<ToDoList> {
         index: selsctedIconIndex,
         buttonBackgroundColor: primary,
         height: 50,
-        color: white,
+        color: Colors.grey[300]!,
         onTap: (index) {
           setState(() {
             selsctedIconIndex = index;

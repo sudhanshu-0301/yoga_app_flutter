@@ -65,6 +65,7 @@ class _BMICalculator extends State<BMICalculator> {
   Widget build(BuildContext context) {
     int selsctedIconIndex = 1;
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       drawer: SideBar(),
       appBar: AppBar(
         backgroundColor: tdBGColor,
@@ -81,8 +82,10 @@ class _BMICalculator extends State<BMICalculator> {
           ),
         ]),
       ),
+
       body: Scaffold(
-        backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[100],
+
         body: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -358,7 +361,7 @@ class _BMICalculator extends State<BMICalculator> {
         index: selsctedIconIndex,
         buttonBackgroundColor: primary,
         height: 50,
-        color: white,
+        color: Colors.grey[300]!,
         onTap: (index) {
           setState(() {
             selsctedIconIndex = index;

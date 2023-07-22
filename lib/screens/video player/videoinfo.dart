@@ -59,7 +59,7 @@ class _VideoInfoState extends State<VideoInfo> {
     return Scaffold(
       drawer: SideBar(),
       appBar: AppBar(
-        backgroundColor: tdBGColor,
+      backgroundColor: Colors.grey[100],
         elevation: 0,
         foregroundColor: black,
         title: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
@@ -276,7 +276,7 @@ class _VideoInfoState extends State<VideoInfo> {
         index: selsctedIconIndex,
         buttonBackgroundColor: primary,
         height: 50,
-        color: white,
+        color: Colors.grey[300]!,
         onTap: (index) {
           setState(() {
             selsctedIconIndex = index;

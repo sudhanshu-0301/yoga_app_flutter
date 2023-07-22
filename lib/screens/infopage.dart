@@ -1,34 +1,30 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/todolist.dart';
-import 'package:yoga_app/widget/listcourses.dart';
 
 import '../controller/get_data_controller.dart';
-import '../widget/diffstyles.dart';
 import '../widget/sidebar.dart';
 import 'bmicalculator.dart';
+import 'home.dart';
 import 'video player/videoinfo.dart';
 import 'infopage.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class InfoPage extends StatefulWidget {
+  const InfoPage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<InfoPage> createState() => _InfoPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final user = FirebaseAuth.instance.currentUser!;
-  int selsctedIconIndex = 2;
-  final DataController controller = Get.put(DataController());
-
+class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
+    int selsctedIconIndex = 4;
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       drawer: SideBar(),
       appBar: AppBar(
         backgroundColor: tdBGColor,
@@ -45,41 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ]),
       ),
-      backgroundColor: Colors.grey[100],
-      body: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // SizedBox(
-          //   // height: MediaQuery.of(context).size.height * 0.04,
-          // ),
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: [
-          //     const Text(
-          //       'Welcome Back...',
-          //       style: TextStyle(
-          //           fontSize: 30,
-          //           fontWeight: FontWeight.w400,
-          //           color: primary,
-          //           fontStyle: FontStyle.italic),
-          //     ),
-          //     Text(
-          //       user.email!,
-          //       style: const TextStyle(
-          //         fontSize: 22,
-          //         fontWeight: FontWeight.w300,
-          //         color: primary,
-          //       ),
-          //     )
-          //   ],
-          // ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.01,
-          ),
-          DiffStyles(),
-          Courses()
-        ],
+      body: SingleChildScrollView(
+        child: Container(),
       ),
+
+
+      // bottom navbar
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         index: selsctedIconIndex,
