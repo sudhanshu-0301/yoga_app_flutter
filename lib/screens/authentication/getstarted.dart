@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:slide_action/slide_action.dart';
+import 'package:yoga_app/helper/colors.dart';
+import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 import 'package:yoga_app/screens/authentication/landingscreen.dart';
 import 'package:yoga_app/widget/backgroundcircle_landing.dart';
 import 'package:just_audio/just_audio.dart';
@@ -169,17 +174,76 @@ class _GetStartedState extends State<GetStarted>
             builder: (context) {
               // final GlobalKey<SlideActionState> _key = GlobalKey();
               return Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  width: res_width * 0.8,
-                  child: ElevatedButton(
-                    child: Text("Press Me BABY DOLL"),
-                    onPressed: () {
-                      Get.to(() => const Landingscreen());
-                    },
-                  ),
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: SlideAction(
+                  trackBuilder: (context, state) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 8,
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          // Show loading if async operation is being performed
+                          state.isPerformingAction
+                              ? "Loading..."
+                              : "Get Started",
+                        ),
+                      ),
+                    );
+                  },
+                  thumbBuilder: (context, state) {
+                    return Container(
+                      margin: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: primary,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Center(
+                        // Show loading indicator if async operation is being performed
+                        child: state.isPerformingAction
+                            ? const CupertinoActivityIndicator(
+                                color: Colors.white,
+                              )
+                            : const Icon(
+                                Icons.chevron_right,
+                                color: Colors.white,
+                              ),
+                      ),
+                    );
+                  },
+                  action: () async {
+                    // Async operation
+                    await Future.delayed(
+                      const Duration(seconds: 2),
+                      () {
+                        Get.to(AuthPage());
+                        FirebaseAuth.instance.signOut();
+
+                        debugPrint("action completed");
+                      },
+                    );
+                  },
                 ),
               );
+              // return Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Container(
+              //     width: res_width * 0.8,
+              //     child: ElevatedButton(
+              //       child: Text("Press Me BABY DOLL"),
+              //       onPressed: () {
+              //         Get.to(() => const Landingscreen());
+              //       },
+              //     ),
+              //   ),
+              // );
             },
           ),
         ],

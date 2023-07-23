@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slide_action/slide_action.dart';
+import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 
 class SlideActionBtn extends StatelessWidget {
@@ -39,7 +40,7 @@ class SlideActionBtn extends StatelessWidget {
           return Container(
             margin: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: Colors.orange,
+              color: primary,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Center(
