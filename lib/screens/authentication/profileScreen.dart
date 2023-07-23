@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'John Doe', // Replace with the user's name
+            name, // Replace with the user's name
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -44,7 +44,7 @@ class ProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'UI/UX Designer', // Replace with the user's occupation
+            'Fitness Freak', // Replace with the user's occupation
             style: TextStyle(
               fontSize: 16,
               color: Colors.grey,
@@ -70,10 +70,31 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget _buildInfoTile(IconData icon, String label, String value) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(label),
-      subtitle: Text(value),
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.only(bottom: 10, left: 7, right: 7, top: 10),
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 0.6,
+            blurStyle: BlurStyle.outer,
+            blurRadius: 5,
+          ),
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(14),
+          topRight: Radius.circular(14),
+          bottomLeft: Radius.circular(14),
+          bottomRight: Radius.circular(14),
+        ),
+      ),
+      // padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+      child: ListTile(
+        leading: Icon(icon),
+        title: Text(label),
+        subtitle: Text(value),
+      ),
     );
   }
 }
