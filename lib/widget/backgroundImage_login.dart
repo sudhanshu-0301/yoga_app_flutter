@@ -21,8 +21,10 @@ class BackgroundImage extends StatelessWidget {
         height: height,
         color: blueGrey.withOpacity(0.8),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: appPadding / 1, vertical: appPadding / 0.5),
+          // padding: EdgeInsets.symmetric(
+          //     horizontal: appPadding / 2, vertical: appPadding / 0.4),
+          padding: EdgeInsets.only(
+              left: appPadding / 2,right: appPadding / 2 , top: appPadding / 0.8,bottom: appPadding / 0.3),
           child: Center( 
             child: Image(
               fit: BoxFit.fitHeight,

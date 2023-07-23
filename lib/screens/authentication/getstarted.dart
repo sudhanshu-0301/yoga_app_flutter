@@ -66,7 +66,7 @@ class _GetStartedState extends State<GetStarted>
           Align(
             alignment: Alignment.center,
             child: Text(
-                "Transform Your Spiritual Journey with our Dynamic Fitness App.",
+                "In asana practice we learn to cherish each breath, to cherish every cell in our bodies. The time we spend on the mat is love in action.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme

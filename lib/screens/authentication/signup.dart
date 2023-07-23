@@ -232,7 +232,7 @@ class _SignUpscreenState extends State<SignUpscreen> {
                         ),
                         hintText: 'Weight',
                         suffixIcon: const Icon(
-                          Icons.assignment_ind_outlined,
+                          Icons.monitor_weight_outlined,
                           size: 25.0,
                           color: Colors.grey,
                         ),

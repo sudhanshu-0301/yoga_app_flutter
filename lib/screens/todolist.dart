@@ -43,12 +43,17 @@ class _ToDoList extends State<ToDoList> {
         elevation: 0,
         foregroundColor: black,
         title: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-          SizedBox(
-            height: 40,
-            width: 40,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset('assets/images/avatar1.png'),
+          GestureDetector(
+            onTap: () {
+              Get.to(() => InfoPage());
+            },
+            child: SizedBox(
+              height: 40,
+              width: 40,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset('assets/images/avatar1.png'),
+              ),
             ),
           ),
         ]),

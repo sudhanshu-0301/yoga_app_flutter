@@ -6,6 +6,7 @@ import 'package:quickalert/quickalert.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/bmicalculator.dart';
 import 'package:yoga_app/screens/home.dart';
+import 'package:yoga_app/screens/infopage.dart';
 import 'package:yoga_app/screens/todolist.dart';
 import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 
@@ -48,21 +49,26 @@ class _SideBarState extends State<SideBar> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(
-            accountName: Text(controller.userProfileData['userName']),
-            // accountName: Text('Test Name'),
-            accountEmail: Text(user.email!),
-
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/background_sidebar.jpg'),
-                  fit: BoxFit.cover),
-            ),
-            currentAccountPicture: const CircleAvatar(
-              child: ClipOval(
-                child: Image(
-                  image: AssetImage('assets/images/avatar1.png'),
-                  fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              Get.to(() => InfoPage());
+            },
+            child: UserAccountsDrawerHeader(
+              accountName: Text(controller.userProfileData['userName']),
+              // accountName: Text('Test Name'),
+              accountEmail: Text(user.email!),
+          
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/background_sidebar.jpg'),
+                    fit: BoxFit.cover),
+              ),
+              currentAccountPicture: const CircleAvatar(
+                child: ClipOval(
+                  child: Image(
+                    image: AssetImage('assets/images/avatar1.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
