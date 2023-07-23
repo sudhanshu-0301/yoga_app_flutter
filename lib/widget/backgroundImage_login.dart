@@ -3,22 +3,30 @@ import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/widget/curveclipper_login.dart';
 
 class BackgroundImage extends StatelessWidget {
-  const BackgroundImage({super.key});
+  // const BackgroundImage({super.key});
+  final String imgURL;
+  final double height;
+
+  BackgroundImage({
+    required this.imgURL,
+    required this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    
     return ClipPath(
       clipper: CurveClipper(),
       child: Container(
-        height: size.height * 0.5,
+        height: height,
         color: blueGrey.withOpacity(0.8),
-        child: const Padding(
+        child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: appPadding / 2, vertical: appPadding / 3),
-          child: Center(
+              horizontal: appPadding / 1, vertical: appPadding / 0.5),
+          child: Center( 
             child: Image(
-              image: AssetImage('assets/images/yoga.png'),
+              fit: BoxFit.fitHeight,
+              image: AssetImage(imgURL),
             ),
           ),
         ),

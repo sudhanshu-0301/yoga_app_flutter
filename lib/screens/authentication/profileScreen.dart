@@ -5,6 +5,8 @@ import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 import 'package:yoga_app/screens/authentication/googleSignIn.dart';
 import 'package:yoga_app/widget/SlideActionButton.dart';
 
+import '../../widget/backgroundImage_login.dart';
+
 class ProfilePage extends StatelessWidget {
   final String name;
   final String email;
@@ -25,20 +27,13 @@ class ProfilePage extends StatelessWidget {
       required this.weight});
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            color: Colors.indigo, // Replace with your desired color
-            padding: EdgeInsets.symmetric(vertical: 30.0),
-            child: Center(
-              child: CircleAvatar(
-                radius: 80,
-                backgroundImage: AssetImage(
-                    'assets/profile_picture.jpg'), // Replace with your profile picture
-              ),
-            ),
-          ),
+
+          BackgroundImage(imgURL:profileImageURL,height: size.height*0.35,),
+          
           SizedBox(height: 20),
           Text(
             name, // Replace with the user's name
