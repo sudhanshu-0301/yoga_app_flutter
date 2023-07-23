@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage1 extends StatelessWidget {
   final String name;
   final String email;
   final String profileImageURL;
@@ -9,7 +9,7 @@ class ProfilePage extends StatelessWidget {
   final String height;
   final String weight;
 
-  ProfilePage({
+  ProfilePage1({
     required this.name,
     required this.email,
     required this.profileImageURL,

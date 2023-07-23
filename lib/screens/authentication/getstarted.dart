@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:yoga_app/screens/authentication/landingscreen.dart';
 import 'package:yoga_app/widget/backgroundcircle_landing.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:slide_to_act/slide_to_act.dart';
+// import 'package:slide_to_act/slide_to_act.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -49,8 +49,8 @@ class _GetStartedState extends State<GetStarted>
           ),
           Align(
             alignment: Alignment.center,
-            child: Text("Share.",
-                style: Theme.of(context).textTheme.headline2!.merge(
+            child: Text("Unlock",
+                style: Theme.of(context).textTheme.displayMedium!.merge(
                     const TextStyle(
                         color: Colors.white, fontFamily: 'UbuntuBold'))),
           ),
@@ -60,7 +60,7 @@ class _GetStartedState extends State<GetStarted>
           Align(
             alignment: Alignment.center,
             child: Text(
-                "In asana practice we learn to cherish each breath, to cherish every cell in our bodies. The time we spend on the mat is love in action.",
+                "Transform Your Spiritual Journey with our Dynamic Fitness App.",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
@@ -138,52 +138,45 @@ class _GetStartedState extends State<GetStarted>
               ],
             ),
           ),
-          // GestureDetector(
-          //   onPanUpdate: (details) {
-          //     RenderBox getBox = context.findRenderObject() as RenderBox;
-          //     setState(() {
-          //       offset = getBox.localToGlobal(details.globalPosition);
-          //       charactermoving = true;
-          //     });
-          //   },
-          //   onPanEnd: (details) {
-          //     setState(() {
-          //       offset = const Offset(120, 0);
-          //       charactermoving = false;
-          //     });
-          //   },
-          //   child: SizedBox(
-          //     height: 44,
-          //     child: !charactermoving
-          //         ? Image.asset(
-          //             'assets/images/left-and-right-arrows.png',
-          //             color: Colors.white,
-          //           )
-          //         : const SizedBox(),
-          //   ),
-          // ),
+          GestureDetector(
+            onPanUpdate: (details) {
+              RenderBox getBox = context.findRenderObject() as RenderBox;
+              setState(() {
+                offset = getBox.localToGlobal(details.globalPosition);
+                charactermoving = true;
+              });
+            },
+            onPanEnd: (details) {
+              setState(() {
+                offset = const Offset(120, 0);
+                charactermoving = false;
+              });
+            },
+            child: SizedBox(
+              height: 44,
+              child: !charactermoving
+                  ? Image.asset(
+                      'assets/images/left-and-right-arrows.png',
+                      color: Colors.white,
+                    )
+                  : const SizedBox(),
+            ),
+          ),
           const SizedBox(
             height: 20,
           ),
           Builder(
             builder: (context) {
-              final GlobalKey<SlideActionState> _key = GlobalKey();
+              // final GlobalKey<SlideActionState> _key = GlobalKey();
               return Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
                   width: res_width * 0.8,
-                  child: SlideAction(
-                    text: "Get Started",
-                    textStyle: Theme.of(context)
-                        .textTheme
-                        .headline6!
-                        .merge(const TextStyle(color: Color(0xff28a5da))),
-                    key: _key,
-                    onSubmit: () async {
+                  child: ElevatedButton(
+                    child: Text("Press Me BABY DOLL"),
+                    onPressed: () {
                       Get.to(() => const Landingscreen());
                     },
-                    innerColor: Color(0xff28a5da),
-                    outerColor: Colors.white,
                   ),
                 ),
               );

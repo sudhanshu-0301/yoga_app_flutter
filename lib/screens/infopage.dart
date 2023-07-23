@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
+import 'package:yoga_app/screens/authentication/profileScreen.dart';
 import 'package:yoga_app/screens/todolist.dart';
 
 import '../controller/get_data_controller.dart';

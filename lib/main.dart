@@ -4,8 +4,7 @@ import 'package:get/get.dart';
 import 'package:yoga_app/firebase_options.dart';
 import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -25,8 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      defaultTransition: Transition.leftToRight,
-      home:  const AuthPage(),
+      defaultTransition: Transition.fadeIn,
+      home: const AuthPage(),
     );
   }
 }

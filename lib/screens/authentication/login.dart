@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
+import 'package:yoga_app/screens/authentication/googleSignIn.dart';
 import 'package:yoga_app/screens/authentication/signup.dart';
 import 'package:yoga_app/screens/home.dart';
 
@@ -43,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
+      Get.to(HomeScreen());
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       if (e.code == 'user-not-found') {
@@ -244,7 +246,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           'assets/images/google logo.png',
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        AuthService().signInWithGoogle();
+                      },
                       label: Text('Sign-In with Google')),
                 ),
                 Row(

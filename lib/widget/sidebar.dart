@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/bmicalculator.dart';
 import 'package:yoga_app/screens/home.dart';
@@ -9,6 +10,7 @@ import 'package:yoga_app/screens/todolist.dart';
 import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 
 import '../controller/get_data_controller.dart';
+import 'SlideActionButton.dart';
 
 class SideBar extends StatefulWidget {
   SideBar({super.key});
@@ -25,7 +27,15 @@ class _SideBarState extends State<SideBar> {
   }
 
   void logUserOut() {
-    FirebaseAuth.instance.signOut();
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.loading,
+      title: 'Warning!',
+      text: 'Are you sure you want to logout?',
+      customAsset: 'assets/images/warning.gif',
+      widget: const SlideActionBtn(),
+    );
+    // FirebaseAuth.instance.signOut();
   }
 
   final user = FirebaseAuth.instance.currentUser!;

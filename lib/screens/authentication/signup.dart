@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/authentication/login.dart';
+import 'package:yoga_app/screens/home.dart';
 
 import '../../controller/signupcontroller.dart';
 
@@ -42,16 +43,17 @@ class _SignUpscreenState extends State<SignUpscreen> {
         password: passwordTextController.text,
       );
       addUserDetails(
-          fullName: fullNameTextController.text,
-          age: ageTextController.text,
-          phoneNo: phoneNoTextController.text,
-          height: heightTextController.text,
-          weight: weightTextController.text,
-          email: emailTextController.text,
-          );
+        fullName: fullNameTextController.text,
+        age: ageTextController.text,
+        phoneNo: phoneNoTextController.text,
+        height: heightTextController.text,
+        weight: weightTextController.text,
+        email: emailTextController.text,
+      );
 
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
+      Get.to(HomeScreen());
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       if (e.code == 'user-not-found') {
@@ -75,7 +77,7 @@ class _SignUpscreenState extends State<SignUpscreen> {
       'phone_number': phoneNo,
       'height': height,
       'weight': weight,
-      'email':email,
+      'email': email,
     });
   }
 
