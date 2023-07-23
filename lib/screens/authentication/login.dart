@@ -71,7 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // part one --- starting image-----
-            BackgroundImage(imgURL: 'assets/images/yoga.png',height:size.height*0.5),
+            BackgroundImage(
+                imgURL: 'assets/images/yoga.png', height: size.height * 0.5),
 
             // part two ----form----
             SizedBox(
