@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slide_action/slide_action.dart';
 import 'package:yoga_app/helper/colors.dart';
+import 'package:yoga_app/models/data.dart';
 import 'package:yoga_app/screens/authentication/authentication_repo.dart';
 import 'package:yoga_app/screens/authentication/landingscreen.dart';
 import 'package:yoga_app/widget/backgroundcircle_landing.dart';
@@ -161,8 +162,8 @@ class _GetStartedState extends State<GetStarted>
               height: 44,
               child: !charactermoving
                   ? Image.asset(
-                      'assets/images/left-and-right-arrows.png',
-                      color: Colors.white,
+                      'assets/images/swipe.gif',
+                      // color: Colors.white,
                     )
                   : const SizedBox(),
             ),
@@ -190,6 +191,10 @@ class _GetStartedState extends State<GetStarted>
                       ),
                       child: Center(
                         child: Text(
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'UbuntuBold',),
                           // Show loading if async operation is being performed
                           state.isPerformingAction
                               ? "Loading..."
@@ -223,7 +228,7 @@ class _GetStartedState extends State<GetStarted>
                     await Future.delayed(
                       const Duration(seconds: 2),
                       () {
-                        Get.to(AuthPage());
+                        Get.to(Landingscreen());
                         FirebaseAuth.instance.signOut();
 
                         debugPrint("action completed");
@@ -232,18 +237,6 @@ class _GetStartedState extends State<GetStarted>
                   },
                 ),
               );
-              // return Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: Container(
-              //     width: res_width * 0.8,
-              //     child: ElevatedButton(
-              //       child: Text("Press Me BABY DOLL"),
-              //       onPressed: () {
-              //         Get.to(() => const Landingscreen());
-              //       },
-              //     ),
-              //   ),
-              // );
             },
           ),
         ],

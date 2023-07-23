@@ -7,13 +7,14 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/authentication/login.dart';
 
-import 'otpvarification.dart';
+import 'otpverification.dart';
 
 class ForgetPasswordWithMail extends StatelessWidget {
   const ForgetPasswordWithMail({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textController = TextEditingController();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -53,6 +54,7 @@ class ForgetPasswordWithMail extends StatelessWidget {
                 child: Column(
                   children: [
                     TextField(
+                      controller: textController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey),
@@ -65,14 +67,19 @@ class ForgetPasswordWithMail extends StatelessWidget {
                           color: Colors.grey,
                         ),
                       ),
-                    ),SizedBox(
-                height: size.height * 0.04,
-              ),
+                    ),
+                    SizedBox(
+                      height: size.height * 0.04,
+                    ),
                     SizedBox(
                       height: size.height * 0.07,
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {Get.to(() => OTPScreen());},
+                        onPressed: () {
+                          Get.to(() => OTPScreen(
+                                userInput: textController.text,
+                              ));
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueAccent,
                             shape: RoundedRectangleBorder(

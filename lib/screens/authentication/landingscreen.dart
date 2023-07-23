@@ -102,9 +102,11 @@ class _LandingscreenState extends State<Landingscreen>
           Align(
             alignment: Alignment.center,
             child: GestureDetector(
-              onTap: () {Get.to(() => const LoginScreen());},
+              onTap: () {
+                Get.to(() => const LoginScreen());
+              },
               child: Container(
-                width: res_width * 0.46,
+                width: res_width * 0.9,
                 decoration: const BoxDecoration(
                     color: kprimarycolor,
                     borderRadius: BorderRadius.all(Radius.circular(13))),
@@ -120,7 +122,7 @@ class _LandingscreenState extends State<Landingscreen>
                       const SizedBox(
                         width: 10,
                       ),
-                      Text("Log-in/Sign-up",
+                      Text("Enter the Serene World of Fitness",
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!

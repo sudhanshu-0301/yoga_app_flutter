@@ -5,7 +5,8 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:yoga_app/helper/colors.dart';
 
 class OTPScreen extends StatelessWidget {
-  const OTPScreen({super.key});
+  final String userInput;
+  const OTPScreen({super.key, required this.userInput});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class OTPScreen extends StatelessWidget {
                 height: size.height * 0.08,
               ),
               Text(
-                'Enter the verificaion code sent at ' + 'abcd@gmail.com',
+                'Enter the verification code sent at ' + userInput,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 22),
               ),

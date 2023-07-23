@@ -170,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   forgetpasswordbtnwidget(
                                     btnIcon: Icons.mail_outline_rounded,
                                     title: 'E-Mail',
-                                    subTitle: 'Reset via Mail varification.',
+                                    subTitle: 'Reset via Mail verification.',
                                     onTap: () {
                                       Get.to(() => ForgetPasswordWithMail());
                                     },
@@ -182,9 +182,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                                   forgetpasswordbtnwidget(
                                     btnIcon: Icons.mobile_friendly_rounded,
-                                    title: 'Phonr No',
+                                    title: 'Phone No',
                                     subTitle:
-                                        'Reset via Phone No varification.',
+                                        'Reset via Phone No verification.',
                                     onTap: () {
                                       Get.to(() => ForgetPasswordWithPhone());
                                     },
@@ -195,9 +195,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         },
-                        child: const Text(
-                          'Forget Password!',
-                          style: TextStyle(color: Colors.grey),
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(color: Colors.blueAccent[400]),
                         ),
                       ),
                     ),
