@@ -11,6 +11,7 @@ import 'package:yoga_app/screens/todolist.dart';
 import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 
 import '../controller/get_data_controller.dart';
+import '../screens/video player/videoscreen.dart';
 import 'SlideActionButton.dart';
 
 class SideBar extends StatefulWidget {
@@ -96,7 +97,7 @@ class _SideBarState extends State<SideBar> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              Get.to(() => const VideoInfo());
+              Get.to(() => VideosPlayer());
             },
           ),
           ListTile(

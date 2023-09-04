@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
 import 'package:yoga_app/helper/colors.dart';
 import 'package:yoga_app/screens/todolist.dart';
+import 'package:yoga_app/screens/video%20player/videoscreen.dart';
 import 'package:yoga_app/widget/listcourses.dart';
 
 import '../controller/get_data_controller.dart';
@@ -102,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: <Widget>[
           IconButton(
             onPressed: () {
-              Get.to(() => const VideoInfo());
+              Get.to(() => VideosPlayer() );
             },
             icon: Icon(
               Icons.play_arrow_outlined,

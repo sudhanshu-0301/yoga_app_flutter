@@ -12,6 +12,7 @@ import '../widget/sidebar.dart';
 import 'bmicalculator.dart';
 import 'home.dart';
 import 'video player/videoinfo.dart';
+import 'video player/videoscreen.dart';
 
 class InfoPage extends StatefulWidget {
   const InfoPage({super.key});
@@ -79,7 +80,7 @@ class _InfoPageState extends State<InfoPage> {
         items: <Widget>[
           IconButton(
             onPressed: () {
-              Get.to(() => const VideoInfo());
+              Get.to(() => VideosPlayer());
             },
             icon: Icon(
               Icons.play_arrow_outlined,

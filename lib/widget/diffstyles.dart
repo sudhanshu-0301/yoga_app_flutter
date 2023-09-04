@@ -5,6 +5,7 @@ import 'package:yoga_app/screens/video%20player/videoinfo.dart';
 import '../models/data.dart';
 import '../models/styles.dart';
 import '../helper/colors.dart';
+import '../screens/video player/videoscreen.dart';
 
 class DiffStyles extends StatelessWidget {
   _buildStyles(BuildContext context, int index) {
@@ -13,7 +14,7 @@ class DiffStyles extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Get.to(() => const VideoInfo());
+        Get.to(() => const VideosPlayer());
       },
       child: Stack(
         alignment: Alignment.center,
@@ -137,7 +138,7 @@ class DiffStyles extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const VideoInfo());
+                  Get.to(() => VideosPlayer());
                 },
                 child: const Text(
                   'See All',

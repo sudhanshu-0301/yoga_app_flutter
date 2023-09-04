@@ -4,6 +4,7 @@ import '../helper/colors.dart';
 import '../models/course.dart';
 import '../models/data.dart';
 import '../screens/video player/videoinfo.dart';
+import '../screens/video player/videoscreen.dart';
 
 class Courses extends StatelessWidget {
   Widget _buildCourses(BuildContext context, int index) {
@@ -26,7 +27,7 @@ class Courses extends StatelessWidget {
             ]),
         child: GestureDetector(
           onTap: () {
-            Get.to(() => const VideoInfo());
+            Get.to(() => VideosPlayer());
           },
           child: Padding(
             padding: const EdgeInsets.all(appPadding),
@@ -136,7 +137,7 @@ class Courses extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => const VideoInfo());
+                    Get.to(() => VideosPlayer());
                   },
                   child: const Text(
                     'See All',

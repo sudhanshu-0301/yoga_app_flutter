@@ -13,6 +13,7 @@ import 'home.dart';
 import 'bmicalculator.dart';
 import 'infopage.dart';
 import 'video player/videoinfo.dart';
+import 'video player/videoscreen.dart';
 
 class ToDoList extends StatefulWidget {
   ToDoList({Key? key}) : super(key: key);
@@ -173,7 +174,7 @@ class _ToDoList extends State<ToDoList> {
         items: <Widget>[
           IconButton(
             onPressed: () {
-              Get.to(() => const VideoInfo());
+              Get.to(() =>  VideosPlayer());
             },
             icon: Icon(
               Icons.play_arrow_outlined,

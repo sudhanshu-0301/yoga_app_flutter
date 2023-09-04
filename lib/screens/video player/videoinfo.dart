@@ -564,6 +564,7 @@ class _VideoInfoState extends State<VideoInfo> {
   Duration? _duration;
   Duration? _position;
   var _progress = 0.0;
+  
   void _onControllerUpdate() async {
     if (_disposed) {
       return;

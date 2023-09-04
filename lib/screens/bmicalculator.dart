@@ -11,6 +11,8 @@ import 'todolist.dart';
 import 'video player/videoinfo.dart';
 import 'dart:math';
 
+import 'video player/videoscreen.dart';
+
 class BMICalculator extends StatefulWidget {
   BMICalculator({super.key});
 
@@ -381,7 +383,7 @@ class _BMICalculator extends State<BMICalculator> {
         items: <Widget>[
           IconButton(
             onPressed: () {
-              Get.to(() => const VideoInfo());
+              Get.to(() => VideosPlayer());
             },
             icon: Icon(
               Icons.play_arrow_outlined,

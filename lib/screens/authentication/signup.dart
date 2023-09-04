@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 import 'package:yoga_app/helper/colors.dart';
@@ -56,11 +57,8 @@ class _SignUpscreenState extends State<SignUpscreen> {
       Get.to(HomeScreen());
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
-      if (e.code == 'user-not-found') {
-        print('User not found');
-      } else if (e.code == 'wrong-password') {
-        print('wrong password');
-      }
+      Navigator.pop(context);
+      Fluttertoast.showToast(msg: e.message!,gravity: ToastGravity.TOP,);
     }
   }
 
