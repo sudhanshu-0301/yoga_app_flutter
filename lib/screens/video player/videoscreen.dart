@@ -74,153 +74,151 @@ class _VideosPlayerState extends State<VideosPlayer> {
           ),
         ]),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: _playArea == false
-              ? BoxDecoration(
-                  gradient: LinearGradient(
-                  colors: [
-                    color.AppColor.gradientFirst,
-                    color.AppColor.gradientSecond
-                  ],
-                  begin: const FractionalOffset(0.0, 0.4),
-                  end: Alignment.topRight,
-                ))
-              : BoxDecoration(color: Colors.white),
-          child: Column(
-            children: [
-              _playArea == false
-                  ? Container(
-                      padding: const EdgeInsets.only(
-                          top: color.appPadding * 2,
-                          left: color.appPadding,
-                          right: color.appPadding),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.23,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text('Legs Toning \nand Glutes Workout',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w400)),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.04,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                width: 90,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          color.AppColor.gradientSecond,
-                                          color.AppColor.gradientFirst
-                                        ],
-                                        begin: Alignment.bottomLeft,
-                                        end: Alignment.topRight)),
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Icon(
-                                        Icons.timer,
-                                        size: 20,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "68 min",
-                                        style: TextStyle(
-                                            fontSize: 16, color: Colors.white),
-                                      )
-                                    ]),
-                              ),
-      // 2
-                              const SizedBox(
-                                width: 20,
-                              ),
-      // 2
-                              Container(
-                                width: 210,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          color.AppColor.gradientSecond,
-                                          color.AppColor.gradientFirst
-                                        ],
-                                        begin: Alignment.bottomLeft,
-                                        end: Alignment.topRight)),
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Icon(
-                                        Icons.handyman_outlined,
-                                        size: 20,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        "Resistance Band, Ketteble",
-                                        style: TextStyle(
-                                            fontSize: 16, color: Colors.white),
-                                      )
-                                    ]),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  : Container(child: _playView(context)),
-              Expanded(
-                  child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(70)),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+      body: Container(
+        decoration: _playArea == false
+            ? BoxDecoration(
+                gradient: LinearGradient(
+                colors: [
+                  color.AppColor.gradientFirst,
+                  color.AppColor.gradientSecond
+                ],
+                begin: const FractionalOffset(0.0, 0.4),
+                end: Alignment.topRight,
+              ))
+            : BoxDecoration(color: Colors.white),
+        child: Column(
+          children: [
+            _playArea == false
+                ? Container(
+                    padding: const EdgeInsets.only(
+                        top: color.appPadding * 2,
+                        left: color.appPadding,
+                        right: color.appPadding),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.23,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const Text('Legs Toning \nand Glutes Workout',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w400)),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.05,
+                          height: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        const Text(
-                          'Circuit 1 : Legs Toning',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.2,
-                        ),
-                        const Text(
-                          '3 Sets',
-                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                        Row(
+                          children: [
+                            Container(
+                              width: 90,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(
+                                      colors: [
+                                        color.AppColor.gradientSecond,
+                                        color.AppColor.gradientFirst
+                                      ],
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight)),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(
+                                      Icons.timer,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "68 min",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white),
+                                    )
+                                  ]),
+                            ),
+// 2
+                            const SizedBox(
+                              width: 20,
+                            ),
+// 2
+                            Container(
+                              width: 210,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(
+                                      colors: [
+                                        color.AppColor.gradientSecond,
+                                        color.AppColor.gradientFirst
+                                      ],
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topRight)),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(
+                                      Icons.handyman_outlined,
+                                      size: 20,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Resistance Band, Ketteble",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white),
+                                    )
+                                  ]),
+                            ),
+                          ],
                         )
                       ],
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
-                    ),
-                    Expanded(child: _listView())
-                  ],
-                ),
-              ))
-            ],
-          ),
+                  )
+                : Container(child: _playView(context)),
+            Expanded(
+                child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topRight: Radius.circular(70)),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.05,
+                      ),
+                      const Text(
+                        'Circuit 1 : Legs Toning',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                      ),
+                      const Text(
+                        '3 Sets',
+                        style: TextStyle(fontSize: 15, color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  Expanded(child: _listView())
+                ],
+              ),
+            ))
+          ],
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
