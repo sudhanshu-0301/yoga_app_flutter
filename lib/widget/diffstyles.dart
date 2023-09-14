@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoga_app/screens/authentication/login.dart';
-import 'package:yoga_app/screens/video%20player/videoinfo.dart';
+
 import '../models/data.dart';
 import '../models/styles.dart';
 import '../helper/colors.dart';
@@ -157,7 +156,7 @@ class DiffStyles extends StatelessWidget {
             height: size.height * 0.33,
             child: ListView.builder(
                 physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.horizontal, 
                 itemCount: styles.length,
                 itemBuilder: (BuildContext context, int index) {
                   return _buildStyles(context, index);
