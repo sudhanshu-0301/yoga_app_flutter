@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yoga_app/screens/home.dart';
 import 'package:yoga_app/screens/todolist.dart';
+import 'package:youtube/youtube_thumbnail.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../../helper/colors.dart' as color;
 import '../../../helper/colors.dart';
@@ -22,15 +22,23 @@ class VideosPlayer extends StatefulWidget {
 }
 
 class _VideosPlayerState extends State<VideosPlayer> {
-  List videoInfo = [];
+  List videoInfo1 = [];
+  List videoInfo2 = [];
   bool _playArea = false;
 
   _initData() {
     DefaultAssetBundle.of(context)
-        .loadString("json/videoinfo.json")
+        .loadString("json/videoinfo1.json")
         .then((value) {
       setState(() {
-        videoInfo = json.decode(value);
+        videoInfo1 = json.decode(value);
+      });
+    });
+    DefaultAssetBundle.of(context)
+        .loadString("json/videoinfo2.json")
+        .then((value) {
+      setState(() {
+        videoInfo2 = json.decode(value);
       });
     });
   }
@@ -78,14 +86,15 @@ class _VideosPlayerState extends State<VideosPlayer> {
         decoration: _playArea == false
             ? BoxDecoration(
                 gradient: LinearGradient(
-                colors: [
-                  color.AppColor.gradientFirst,
-                  color.AppColor.gradientSecond
-                ],
-                begin: const FractionalOffset(0.0, 0.4),
-                end: Alignment.topRight,
-              ))
-            : BoxDecoration(color: Colors.white),
+                  colors: [
+                    color.AppColor.gradientFirst,
+                    color.AppColor.gradientSecond
+                  ],
+                  begin: const FractionalOffset(0.0, 0.4),
+                  end: Alignment.topRight,
+                ),
+              )
+            : const BoxDecoration(color: Colors.white),
         child: Column(
           children: [
             _playArea == false
@@ -99,7 +108,7 @@ class _VideosPlayerState extends State<VideosPlayer> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Legs Toning \nand Glutes Workout',
+                        const Text('Gereral Yoga \nExcercises',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -121,9 +130,9 @@ class _VideosPlayerState extends State<VideosPlayer> {
                                       ],
                                       begin: Alignment.bottomLeft,
                                       end: Alignment.topRight)),
-                              child: Row(
+                              child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
+                                  children: [
                                     Icon(
                                       Icons.timer,
                                       size: 20,
@@ -133,7 +142,7 @@ class _VideosPlayerState extends State<VideosPlayer> {
                                       width: 5,
                                     ),
                                     Text(
-                                      "68 min",
+                                      "120 min",
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.white),
                                     )
@@ -156,68 +165,117 @@ class _VideosPlayerState extends State<VideosPlayer> {
                                       ],
                                       begin: Alignment.bottomLeft,
                                       end: Alignment.topRight)),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Icon(
-                                      Icons.handyman_outlined,
-                                      size: 20,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Resistance Band, Ketteble",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.white),
-                                    )
-                                  ]),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.handyman_outlined,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "Resistance Band, Yoga Mat",
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.white),
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         )
                       ],
                     ),
                   )
-                : Container(child: _playView(context)),
+                : Container(
+                    child: _playView(context),
+                  ),
             Expanded(
-                child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(70)),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(70)),
+                ),
+                child: Scrollbar(
+                  thumbVisibility: true,
+                  thickness: 7,
+                  interactive: true,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // list of stress and anxiety relief yoga video builder
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          width: MediaQuery.of(context).size.width * 0.96,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.75,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.grey[300],
+                                ),
+                                alignment: Alignment.centerLeft,
+                                padding: const EdgeInsets.only(
+                                    left: 5, top: 10, bottom: 10),
+                                margin: const EdgeInsets.only(
+                                    left: 18, bottom: 4, top: 8),
+                                child: const Text(
+                                  'Healing Yoga Exercises',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Expanded(
+                                child: _listView(videoInfo1),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // list of daily yoga video builder
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          width: MediaQuery.of(context).size.width * 0.96,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.75,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.grey[300],
+                                ),
+                                alignment: Alignment.centerLeft,
+                                padding: const EdgeInsets.only(
+                                    left: 5, top: 10, bottom: 10),
+                                margin: const EdgeInsets.only(
+                                    left: 18, bottom: 4, top: 2),
+                                child: const Text(
+                                  'Daily Yoga Exercises',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Expanded(
+                                child: _listView(videoInfo2),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.05,
-                      ),
-                      const Text(
-                        'Circuit 1 : Legs Toning',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.2,
-                      ),
-                      const Text(
-                        '3 Sets',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                  Expanded(child: _listView())
-                ],
-              ),
-            ))
+            )
           ],
         ),
       ),
@@ -329,8 +387,8 @@ class _VideosPlayerState extends State<VideosPlayer> {
     }
   }
 
-  _initialieVideo(int index) {
-    final videoLink = videoInfo[index]["videoUrl"];
+  _initialieVideo(int index, List videoInformation) {
+    final videoLink = videoInformation[index]["videoUrl"];
 
     if (_controller == null) {
       _controller = YoutubePlayerController(
@@ -347,32 +405,39 @@ class _VideosPlayerState extends State<VideosPlayer> {
     }
   }
 
-  _listView() {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: appPadding),
-      itemCount: videoInfo.length,
-      itemBuilder: (_, int index) {
-        return GestureDetector(
-          onTap: () {
-            _initialieVideo(index);
-            debugPrint(index.toString());
+  _listView(List videoInformation) {
+    return Scrollbar(
+      thumbVisibility: true,
+      thickness: 7,
+      interactive: true,
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: appPadding),
+        itemCount: videoInformation.length,
+        itemBuilder: (_, int index) {
+          return GestureDetector(
+            onTap: () {
+              _initialieVideo(index, videoInformation);
+              debugPrint(index.toString());
 
-            setState(
-              () {
-                if (_playArea == false) {
-                  _playArea = true;
-                }
-                _playView(context);
-              },
-            );
-          },
-          child: _buildCard(index),
-        );
-      },
+              setState(
+                () {
+                  if (_playArea == false) {
+                    _playArea = true;
+                  }
+                  _playView(context);
+                },
+              );
+            },
+            child: _buildCard(index, videoInformation),
+          );
+        },
+      ),
     );
   }
 
-  _buildCard(int index) {
+  _buildCard(int index, List videoInformation) {
+    final youtubeVideoLink = videoInformation[index]["videoUrl"];
+    final youtubeVideoId = YoutubePlayer.convertUrlToId(youtubeVideoLink)!;
     return Container(
       height: MediaQuery.of(context).size.height * 0.15,
       child: Column(children: [
@@ -384,9 +449,8 @@ class _VideosPlayerState extends State<VideosPlayer> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                    image: AssetImage(
-                      videoInfo[index]["thumbnail"],
-                    ),
+                    image: NetworkImage(
+                        YoutubeThumbnail(youtubeId: youtubeVideoId).hd()),
                     fit: BoxFit.cover),
               ),
             ),
@@ -395,16 +459,17 @@ class _VideosPlayerState extends State<VideosPlayer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  videoInfo[index]["title"],
+                  videoInformation[index]["title"],
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(top: 13),
-                    child: Text(
-                      videoInfo[index]["time"],
-                      style: const TextStyle(color: Colors.grey),
-                    ))
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    videoInformation[index]["time"],
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                )
               ],
             )
           ],

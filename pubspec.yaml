@@ -50,6 +50,7 @@ dependencies:
   google_sign_in: ^6.1.4
   fluttertoast: ^8.2.2
   youtube_player_flutter: ^8.1.2
+  youtube: ^1.0.1
   
 
 dev_dependencies:
